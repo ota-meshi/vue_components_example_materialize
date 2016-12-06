@@ -1,0 +1,2 @@
+# vue_components_example_materialize
+Vue.js v2を使ったコンポーネント作成サンプル（Materialize利用）
