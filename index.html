@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+
+<title>Vue コンポーネント</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet" />
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/vue/dist/vue.js"></script>
+
+<script type="text/javascript" src="js/base.js"></script>
+
+</head>
+<body>
+	<div id="main">
+		<div class="row">
+			<div class="col s12 center"><h4>Buttons</h4></div>
+			<div class="col s12 m6 l3 center">
+				<m-button v-on:click="onButtonClick" >CAPTION</m-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				<m-button icon="thumb_up" v-on:click="onButtonClick" >ICON</m-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				<m-button flat v-on:click="onButtonClick" >flat</m-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				floating
+				<m-button floating icon="thumb_up" v-on:click="onButtonClick" >floating</m-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				<m-button disabled v-on:click="onButtonClick" >disabled</m-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				<m-button class="blue" v-on:click="onButtonClick" >class</m-button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center"><h4>Dropdown Buttons</h4></div>
+			<div class="col s12 m6 l3 center">
+				<m-dropdown-button>
+					<span slot="label">CAPTION</span>
+					<m-dropitem v-on:click="onButtonClick" >Item1</m-dropitem>
+					<m-dropitem divider ></m-dropitem>
+					<m-dropitem v-on:click="onButtonClick" >Item2</m-dropitem>
+				</m-dropdown-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				<m-dropdown-button icon="thumb_up" >
+					<span slot="label">ICON</span>
+					<m-dropitem v-on:click="onButtonClick" >Item1</m-dropitem>
+					<m-dropitem divider ></m-dropitem>
+					<m-dropitem v-on:click="onButtonClick" >Item2</m-dropitem>
+				</m-dropdown-button>
+			</div>
+			<div class="col s12 m6 l3 center">
+				floating
+				<m-dropdown-button floating icon="thumb_up" >
+					<m-dropitem v-on:click="onButtonClick" >Item1</m-dropitem>
+					<m-dropitem divider ></m-dropitem>
+					<m-dropitem v-on:click="onButtonClick" >Item2</m-dropitem>
+				</m-dropdown-button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center"><h4>Inputs</h4></div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input label="input" v-model="inputValue1" ></m-input>
+				{{inputValue1}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input placeholder="placeholder" label="placeholder" v-model="inputValue2" ></m-input>
+				{{inputValue2}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input type="number" label="number" v-model="inputValue3" ></m-input>
+				{{inputValue3}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input required label="required" v-model="inputValue4" ></m-input>
+				{{inputValue4}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input readonly label="readonly" v-model="inputValue5" ></m-input>
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input icon="account_circle" label="icon" v-model="inputValue6" ></m-input>
+				{{inputValue6}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-input label="validate" v-model="inputValue7" v-on:validate="validate" ></m-input>
+				{{inputValue7}}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center"><h4>Datepickers</h4></div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-datepicker label="datepicker" v-model="datepickerValue1" ></m-datepicker>
+				{{datepickerValue1 | date.format('yyyy年MM月dd日')}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-datepicker label="init null value" v-model="datepickerValue2" ></m-datepicker>
+				{{datepickerValue2 | date.format('yyyy年MM月dd日')}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-datepicker required label="required" v-model="datepickerValue3" ></m-datepicker>
+				{{datepickerValue3 | date.format('yyyy年MM月dd日')}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-datepicker readonly label="readonly" v-model="datepickerValue4" ></m-datepicker>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center"><h4>Selects</h4></div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-select label="select" v-model="selectValue1" >
+					<option value="1">Item1</option>
+					<option value="2">Item2</option>
+					<option value="3">Item3</option>
+					<option value="4">Item4</option>
+				</m-select>
+				{{selectValue1}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-select required label="required" v-model="selectValue2" >
+					<option value="">Empty</option>
+					<option value="1">Item1</option>
+					<option value="2">Item2</option>
+					<option value="3">Item3</option>
+					<option value="4">Item4</option>
+				</m-select>
+				{{selectValue2}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-select required label="required empty items" >
+				</m-select>
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-select number label="number" v-model="selectValue3" >
+					<option value="1">Item1</option>
+					<option value="2">Item2</option>
+					<option value="3">Item3</option>
+					<option value="4">Item4</option>
+				</m-select>
+				{{selectValue3}} : typeof {{typeof selectValue3}}
+			</div>
+			<div class="col s12 m6 l3" style="height: 120px;">
+				<m-select disabled label="disabled" v-model="selectValue4" >
+					<option value="1">Item1</option>
+					<option value="2">Item2</option>
+					<option value="3">Item3</option>
+					<option value="4">Item4</option>
+				</m-select>
+				{{selectValue4}}
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col s12 center"><h4>Collections</h4></div>
+			<div class="col s12 m6 l3">
+				Normal<br>
+				<m-collection :items="collectionItems1" ></m-collection>
+			</div>
+			<div class="col s12 m6 l3">
+				CustomItems<br>
+				<m-collection :item-component="$options.components.collectionItem" :items="collectionItems1" ></m-collection>
+			</div>
+			<div class="col s12 m6 l3">
+				Header<br>
+				<m-collection :items="collectionItems1" >
+					<h4 slot="header">Header</h4>
+				</m-collection>
+			</div>
+			<div class="col s12 m6 l3">
+				header2<br>
+				<m-collection :items="collectionItems1" >
+					<h4 slot="header"><i class="material-icons">grade</i>Header<i class="material-icons">grade</i></h4>
+				</m-collection>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center"><h4>Collections2</h4></div>
+			<div class="col s12 m6 l3">
+				Normal<br>
+				<m-collection2>
+					<span v-for="item in collectionItems1">{{item}}</span>
+				</m-collection2>
+			</div>
+			<div class="col s12 m6 l3">
+				CustomItems<br>
+				<m-collection2 >
+					<div v-for="item in collectionItems1">{{ item }}<a href="#!" class="secondary-content"><i class="material-icons" v-on:click="onClickItem(item)" >send</i></a></div>
+				</m-collection2>
+			</div>
+			<div class="col s12 m6 l3">
+				Header<br>
+				<m-collection2>
+					<h4 slot="header">header</h4>
+					<span v-for="item in collectionItems1">{{item}}</span>
+				</m-collection2>
+			</div>
+			<div class="col s12 m6 l3">
+				header2<br>
+				<m-collection2 >
+					<h4 slot="header"><i class="material-icons">grade</i>Header<i class="material-icons">grade</i></h4>
+					<div v-for="item in collectionItems1">{{ item }}<a href="#!" class="secondary-content"><i class="material-icons" v-on:click="onClickItem(item)" >send</i></a></div>
+				</m-collection2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 center"><h4>Collections2＋</h4></div>
+			<div class="col s12 m6 l3">
+				Normal<br>
+				<m-collection2>
+					<span >Item1</span>
+					<div >Item2<a href="#!" class="secondary-content"><i class="material-icons" v-on:click="onClickItem('item2')" >send</i></a></div>
+				</m-collection2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 center"><h4>Collections3</h4></div>
+			<div class="col s12 m6 l3">
+				Normal<br>
+				<m-collection3>
+					<span v-for="item in collectionItems1">{{item}}</span>
+				</m-collection3>
+			</div>
+			<div class="col s12 m6 l3">
+				CustomItems<br>
+				<m-collection3 >
+					<div v-for="item in collectionItems1">{{ item }}<a href="#!" class="secondary-content"><i class="material-icons" v-on:click="onClickItem(item)" >send</i></a></div>
+				</m-collection3>
+			</div>
+			<div class="col s12 m6 l3">
+				Header<br>
+				<m-collection3>
+					<h4 slot="header">header</h4>
+					<span v-for="item in collectionItems1">{{item}}</span>
+				</m-collection3>
+			</div>
+			<div class="col s12 m6 l3">
+				header2<br>
+				<m-collection3 >
+					<h4 slot="header"><i class="material-icons">grade</i>Header<i class="material-icons">grade</i></h4>
+					<div v-for="item in collectionItems1">{{ item }}<a href="#!" class="secondary-content"><i class="material-icons" v-on:click="onClickItem(item)" >send</i></a></div>
+				</m-collection3>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>
